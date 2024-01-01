@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    
+    <style>
+        body{
+    margin:0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    color: white;
+    font-family: sans-serif;
+    background-size: cover;
+}
+h2{
+    color: rgb(63, 60, 60);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 4px whitesmoke;
+}
+.clock{
+    display: flex;
+    flex-direction: row;
+}
+.clock div{
+    margin: 5px;
+    position: relative;
+}
+.clock span{
+    height: 100px;
+    width: 80px;
+    display: flex;
+    background-color: rgb(79, 70, 55);
+    opacity: .8;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+}
+.clock .text{
+    height: 30px;
+    background-color: rgb(92, 92, 87);
+    opacity: 1;
+    font-size: 13px;
+    font-weight: bold;
+}
+.clock #ampm{
+    bottom: 0;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+}
+    </style>
+    
+</head>
+<body>
+    <h2>Digital Clock</h2>
+    <div class="clock">
+        <div>
+            <span id="hours">00</span>
+            <span class="text">Hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span class="text">Minutes</span>
+        </div>
+        <div>
+            <span id="Seconds">00</span>
+            <span class="text">Seconds</span>
+        </div>
+        <div>
+            <span id="ampm">AM</span>
+        </div>
+    </div>
+</body>
+<script>
+    let hours = document.getElementById('hours');
+    let minutes = document.getElementById('minutes');
+    let seconds = document.getElementById('Seconds'); // Corrected ID
+
+    function displayTime(){
+        let h = new Date().getHours();
+        let m = new Date().getMinutes();
+        let s = new Date().getSeconds();
+
+        if (h > 12) {
+            h = h - 12;
+            document.getElementById('ampm').innerHTML = "PM";
+        }
+        if (h < 10) {
+            h = "0" + h;
+        }
+        if (m < 10) {
+            m = "0" + m;
+        }
+        if (s < 10) {
+            s = "0" + s;
+        }
+
+        hours.innerHTML = h;
+        minutes.innerHTML = m;
+        seconds.innerHTML = s;
+    }
+    setInterval(displayTime, 1000);
+</script>
+</html>
